@@ -18,3 +18,5 @@
 "System starts sleeping" = "Система перешла в сон";
 "About Ejectify" = "Об Ejectify";
 "Quit Ejectify" = "Выйти из Ejectify";
+"Disks ejected" = "Диски извлечены";
+"All external disks have been ejected successfully" = "Все внешние диски были успешно извлечены";

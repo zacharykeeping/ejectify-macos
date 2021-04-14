@@ -18,3 +18,5 @@
 "System starts sleeping" = "El sistema entra en suspensión";
 "About Ejectify" = "Acerca de Ejectify";
 "Quit Ejectify" = "Salir de Ejectify";
+"Disks ejected" = "Discos expulsados";
+"All external disks have been ejected successfully" = "Todos los discos externos se expulsaron correctamente";
