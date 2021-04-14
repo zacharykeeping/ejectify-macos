@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		869A93BE2626FA2C00AE8B96 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A93BD2626FA2C00AE8B96 /* NotificationController.swift */; };
 		B82E12D32570FF0F004547C7 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E12D22570FF0F004547C7 /* Preference.swift */; };
 		B82E12D825710006004547C7 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B82E12D725710006004547C7 /* LaunchAtLogin */; };
 		B89F412525AC9D7200E0B8C1 /* DADisk+DiskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F412425AC9D7200E0B8C1 /* DADisk+DiskImage.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		869A93BD2626FA2C00AE8B96 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationController.swift; path = ejectify/Controller/NotificationController.swift; sourceTree = SOURCE_ROOT; };
 		B82E12D22570FF0F004547C7 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		B85E03F025AF54D300CA51C5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B85E03F225AF5B8A00CA51C5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B8DFADB9256D0565009E9296 /* ActivityController.swift */,
+				869A93BD2626FA2C00AE8B96 /* NotificationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				B8AF59E92569569A003481A8 /* AppDelegate.swift in Sources */,
 				B8DFADBA256D0565009E9296 /* ActivityController.swift in Sources */,
 				B82E12D32570FF0F004547C7 /* Preference.swift in Sources */,
+				869A93BE2626FA2C00AE8B96 /* NotificationController.swift in Sources */,
 				B89F412525AC9D7200E0B8C1 /* DADisk+DiskImage.swift in Sources */,
 				B8DFADB5256CF511009E9296 /* StatusBar.swift in Sources */,
 			);
