@@ -95,6 +95,7 @@ class StatusBarMenu: NSMenu {
     private var unmountWhenScreenIsLocked: NSMenuItem?
     private var unmountWhenScreensStartedSleepingItem: NSMenuItem?
     private var unmountWhenSystemStartsSleepingItem: NSMenuItem?
+    private var unmountNeverItem: NSMenuItem?
     private func buildUnmountWhenMenu() -> NSMenu {
         let unmountWhenMenu = NSMenu(title: "Unmount when".localized)
         
@@ -117,6 +118,11 @@ class StatusBarMenu: NSMenu {
         unmountWhenSystemStartsSleepingItem!.target = self
         unmountWhenSystemStartsSleepingItem!.state = Preference.unmountWhen == .systemStartsSleeping ? .on : .off
         unmountWhenMenu.addItem(unmountWhenSystemStartsSleepingItem!)
+        
+        unmountNeverItem = NSMenuItem(title: "Never".localized, action: #selector(unmountWhenChanged(menuItem:)), keyEquivalent: "")
+        unmountNeverItem!.target = self
+        unmountNeverItem!.state = Preference.unmountWhen == .never ? .on : .off
+        unmountWhenMenu.addItem(unmountNeverItem!)
         
         return unmountWhenMenu
     }
@@ -157,6 +163,8 @@ class StatusBarMenu: NSMenu {
             Preference.unmountWhen = .screensStartedSleeping
         } else if menuItem == unmountWhenSystemStartsSleepingItem {
             Preference.unmountWhen = .systemStartsSleeping
+        } else if menuItem == unmountNeverItem {
+            Preference.unmountWhen = .never
         }
         updateMenu()
     }

@@ -38,6 +38,8 @@ class ActivityController {
         case .systemStartsSleeping:
             NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(unmountVolumes), name: NSWorkspace.willSleepNotification, object: nil)
             NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(mountVolumes), name: NSWorkspace.didWakeNotification, object: nil)
+        case .never:
+            break
         }
     }
     

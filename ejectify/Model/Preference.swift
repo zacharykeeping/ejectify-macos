@@ -15,6 +15,7 @@ class Preference {
         case screenIsLocked = "screenIsLocked"
         case screensStartedSleeping = "screensStartedSleeping"
         case systemStartsSleeping = "systemStartsSleeping"
+        case never = "never"
     }
     
     static var launchAtLogin: Bool {
