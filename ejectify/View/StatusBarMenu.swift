@@ -38,9 +38,19 @@ class StatusBarMenu: NSMenu {
     
     private func updateMenu() {
         self.removeAllItems()
+        buildEjectAllMenu()
         buildVolumesMenu()
         buildOptionsMenu()
         buildAppMenu()
+    }
+    
+    private func buildEjectAllMenu() {
+        // let ejectAll = volumes.count == 0 ? "No volumes".localized : "Volumes".localized
+        let ejectAllItem = NSMenuItem(title: "Eject All", action: volumes.count > 0 ? #selector(unmountVolumes) : nil, keyEquivalent: "")
+        ejectAllItem.target = self
+        addItem(ejectAllItem)
+        
+        addItem(NSMenuItem.separator())
     }
     
     private func buildVolumesMenu() {
@@ -157,5 +167,11 @@ class StatusBarMenu: NSMenu {
     
     @objc private func quitClicked() {
         NSApplication.shared.terminate(self)
+    }
+    
+    @objc private func unmountVolumes() {
+        volumes.forEach { (volume) in
+            volume.unmount()
+        }
     }
 }
