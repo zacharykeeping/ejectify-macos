@@ -6,10 +6,12 @@
 //
 
 import AppKit
+import UserNotifications
 
 class StatusBarMenu: NSMenu {
     
     private var volumes: [Volume]
+    private var pendingNotification: Bool = false
     
     required init(coder: NSCoder) {
         volumes = Volume.mountedVolumes()
@@ -34,6 +36,7 @@ class StatusBarMenu: NSMenu {
     @objc private func disksChanged() {
         volumes = Volume.mountedVolumes()
         updateMenu()
+        checkVolumeCountForNotification()
     }
     
     private func updateMenu() {
@@ -45,7 +48,6 @@ class StatusBarMenu: NSMenu {
     }
     
     private func buildEjectAllMenu() {
-        // let ejectAll = volumes.count == 0 ? "No volumes".localized : "Volumes".localized
         let ejectAllItem = NSMenuItem(title: "Eject all", action: volumes.count > 0 ? #selector(unmountVolumes) : nil, keyEquivalent: "")
         ejectAllItem.target = self
         addItem(ejectAllItem)
@@ -181,5 +183,48 @@ class StatusBarMenu: NSMenu {
         volumes.forEach { (volume) in
             volume.unmount()
         }
+        
+        pendingNotification = true
+    }
+    
+    @objc private func checkVolumeCountForNotification() {
+        if (pendingNotification && volumes.count == 0) {
+            displayUnmountedNotification()
+            pendingNotification = false
+        }
+    }
+    
+    @objc private func displayUnmountedNotification() {
+        let title = "Disks ejected".localized
+        let subTitle = "All external disks have been ejected successfully".localized
+        let notificationDelay = 5
+        let identifier = UUID().uuidString
+        
+        // Manually display the notification
+        if #available(OSX 10.14, *) {
+            let notificationCenter = UNUserNotificationCenter.current()
+
+            let notification = UNMutableNotificationContent()
+            notification.title = title
+            notification.body = subTitle
+            notification.sound = UNNotificationSound.default
+            
+
+            let request = UNNotificationRequest(identifier: identifier, content: notification, trigger: nil)
+            notificationCenter.add(request)
+            notificationCenter.perform(#selector(UNUserNotificationCenter.removeDeliveredNotifications(withIdentifiers:)), with: [identifier], afterDelay: TimeInterval(notificationDelay))
+        } else {
+            // Fallback on earlier versions
+            let notification = NSUserNotification()
+            notification.identifier = identifier
+            notification.title = title
+            notification.subtitle = subTitle
+            notification.soundName = NSUserNotificationDefaultSoundName
+            
+            let notificationCenter = NSUserNotificationCenter.default
+            notificationCenter.deliver(notification)
+            notificationCenter.perform(#selector(notificationCenter.removeAllDeliveredNotifications), with: notification, afterDelay: TimeInterval(notificationDelay))
+        }
+        
     }
 }

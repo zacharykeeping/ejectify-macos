@@ -18,3 +18,5 @@
 "System starts sleeping" = "Ruhezustand für Computer aktiviert wird";
 "About Ejectify" = "Über Ejectify";
 "Quit Ejectify" = "Ejectify beenden";
+"Disks ejected" = "Festplatten ausgeworfen";
+"All external disks have been ejected successfully" = "Alle externen Festplatten wurden erfolgreich ausgeworfen";

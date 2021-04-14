@@ -18,3 +18,5 @@
 "System starts sleeping" = "システムをスリープしたとき";
 "About Ejectify" = "Ejectify について";
 "Quit Ejectify" = "Ejectify を終了";
+"Disks ejected" = "排出されたディスク";
+"All external disks have been ejected successfully" = "すべての外部ディスクが正常に排出されました";

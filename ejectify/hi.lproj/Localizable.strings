@@ -18,3 +18,5 @@
 "System starts sleeping" = "सिस्टम स्लीप करना शुरू करता है";
 "About Ejectify" = "Ejectify के बारे में";
 "Quit Ejectify" = "Ejectify से बाहर निकलें";
+"Disks ejected" = "डिस्कस को हटा दिया गया";
+"All external disks have been ejected successfully" = "सभी बाहरी डिस्क सफलतापूर्वक हटा दिए गए हैं";
