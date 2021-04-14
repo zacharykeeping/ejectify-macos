@@ -53,6 +53,12 @@ class Volume {
         DADiskMount(disk, nil, DADiskMountOptions(kDADiskMountOptionDefault), nil, nil)
     }
     
+    static func unmountAll() {
+        Volume.mountedVolumes().forEach { (volume) in
+            volume.unmount()
+        }
+    }
+    
     static func mountedVolumes() -> [Volume] {
         guard let mountedVolumeURLs = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys:nil, options: []) else {
             return []
