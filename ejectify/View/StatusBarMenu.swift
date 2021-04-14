@@ -46,7 +46,7 @@ class StatusBarMenu: NSMenu {
     
     private func buildEjectAllMenu() {
         // let ejectAll = volumes.count == 0 ? "No volumes".localized : "Volumes".localized
-        let ejectAllItem = NSMenuItem(title: "Eject All", action: volumes.count > 0 ? #selector(unmountVolumes) : nil, keyEquivalent: "")
+        let ejectAllItem = NSMenuItem(title: "Eject all", action: volumes.count > 0 ? #selector(unmountVolumes) : nil, keyEquivalent: "")
         ejectAllItem.target = self
         addItem(ejectAllItem)
         
